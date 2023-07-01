@@ -1,5 +1,6 @@
 package com.odde.atddv2;
 
+import com.odde.atddv2.repo.OrderRepo;
 import com.odde.atddv2.repo.UserRepo;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -16,11 +17,15 @@ public class ApplicationSteps {
     private UserRepo userRepo;
 
     @Autowired
+    private OrderRepo orderRepo;
+
+    @Autowired
     private App app;
 
     @Before(order = 1)
     public void clearDB() {
         userRepo.deleteAll();
+        orderRepo.deleteAll();
     }
 
     @After

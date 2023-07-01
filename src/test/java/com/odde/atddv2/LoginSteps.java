@@ -3,11 +3,10 @@ package com.odde.atddv2;
 import com.odde.atddv2.entity.User;
 import com.odde.atddv2.page.HomePage;
 import com.odde.atddv2.repo.UserRepo;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.Before;
-import io.cucumber.java.PendingException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginSteps {
@@ -43,6 +42,8 @@ public class LoginSteps {
 
     @Before("@ui-login")
     public void uiLogin() {
-        throw new PendingException();
+        existsAUserWithUsernameAndPassword("j", "j");
+        iLoginWithUsernameAndPassword("j", "j");
+        shouldBeLoggedIn("j");
     }
 }

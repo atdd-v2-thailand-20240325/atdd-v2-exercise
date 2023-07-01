@@ -70,4 +70,13 @@ public class App {
         }
     }
 
+    public void shouldNotHaveText(String text) {
+        await().ignoreExceptions().untilAsserted(() -> assertThat(getAndroidDriver().findElementsByAndroidUIAutomator(String.format("new UiSelector().text(\"%s\")", text))).isEmpty());
+    }
+
+    public void selectTextByHint(String hint, String text) {
+        clickByText(hint);
+        clickByText(text);
+    }
+
 }
