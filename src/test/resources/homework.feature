@@ -21,5 +21,8 @@ Feature: Get familiar with environment
     When search "cucumber" with baidu
     Then print search result count
 
+  Scenario: Homework 3 - Operate android
+    * input username "Tom"
+
   Scenario: Verify test environment
     Then test environment should be ok
