@@ -16,21 +16,19 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
 import static org.openqa.selenium.By.xpath;
 
 public class TestSteps {
     @Autowired
     UserRepo userRepo;
-    private WebDriver webDriver = null;
+    private RemoteWebDriver webDriver = null;
     private Response response;
 
     @SneakyThrows
-    public WebDriver createWebDriver() {
+    public RemoteWebDriver createWebDriver() {
         return new RemoteWebDriver(new URL("http://web-driver.tool.net:4444"), DesiredCapabilities.chrome());
     }
 
@@ -91,21 +89,4 @@ public class TestSteps {
         return webDriver;
     }
 
-    @When("I login with username {string} and password {string}")
-    public void iLoginWithUsernameAndPassword(String userName, String password) {
-        getWebDriver().get("http://host.docker.internal:10081");
-        await().ignoreExceptions().until(() -> getWebDriver().findElement(xpath("//*[@id=\"app\"]/div/form/div[2]/div/div/input")), Objects::nonNull).sendKeys(userName);
-        await().ignoreExceptions().until(() -> getWebDriver().findElement(xpath("//*[@id=\"app\"]/div/form/div[3]/div/div/input")), Objects::nonNull).sendKeys(password);
-        await().ignoreExceptions().until(() -> getWebDriver().findElement(xpath("//*[@id=\"app\"]/div/form/button/span")), Objects::nonNull).click();
-    }
-
-    @Then("{string} should be logged in")
-    public void shouldBeLoggedIn(String userName) {
-        await().ignoreExceptions().untilAsserted(() -> assertThat(getWebDriver().findElements(xpath("//*[text()='" + ("Welcome " + userName) + "']"))).isNotEmpty());
-    }
-
-    @Then("login failed error message should be {string}")
-    public void loginFailedErrorMessageShouldBe(String message) {
-        await().ignoreExceptions().untilAsserted(() -> assertThat(getWebDriver().findElements(xpath("//*[text()='" + message + "']"))).isNotEmpty());
-    }
 }
