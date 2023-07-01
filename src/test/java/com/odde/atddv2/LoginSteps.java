@@ -13,7 +13,7 @@ public class LoginSteps {
     private HomePage homePage;
 
     @Autowired
-    private Browser browser;
+    private App app;
 
     @Autowired
     private UserRepo userRepo;
@@ -31,11 +31,11 @@ public class LoginSteps {
 
     @Then("{string} should be logged in")
     public void shouldBeLoggedIn(String userName) {
-        browser.shouldHaveText("Welcome " + userName);
+        app.shouldHaveText("Welcome " + userName);
     }
 
     @Then("login failed error message should be {string}")
     public void loginFailedErrorMessageShouldBe(String message) {
-        browser.shouldHaveText(message);
+        app.shouldHaveText(message);
     }
 }

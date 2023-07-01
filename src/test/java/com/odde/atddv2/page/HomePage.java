@@ -1,6 +1,6 @@
 package com.odde.atddv2.page;
 
-import com.odde.atddv2.Browser;
+import com.odde.atddv2.App;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,15 +8,15 @@ import org.springframework.stereotype.Component;
 public class HomePage {
 
     @Autowired
-    public Browser browser;
+    public App app;
 
     public void open() {
-        browser.launchByUrl("/");
+        app.launch();
     }
 
     public void login(String userName, String password) {
-        browser.inputTextByPlaceholder("UserName", userName);
-        browser.inputTextByPlaceholder("Password", password);
-        browser.clickByText("Login");
+        app.inputTextByHint("Username", userName);
+        app.inputTextByHint("Password", password);
+        app.clickByText("LOGIN");
     }
 }

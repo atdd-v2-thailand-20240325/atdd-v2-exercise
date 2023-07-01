@@ -16,7 +16,7 @@ public class ApplicationSteps {
     private UserRepo userRepo;
 
     @Autowired
-    private Browser browser;
+    private App app;
 
     @Before(order = 1)
     public void clearDB() {
@@ -24,7 +24,8 @@ public class ApplicationSteps {
     }
 
     @After
-    public void closeBrowser() {
-        browser.quit();
+    public void closeApp() {
+        app.closeApp();
     }
+
 }
