@@ -31,7 +31,7 @@ public class LoginSteps {
 
     @Then("{string} should be logged in")
     public void shouldBeLoggedIn(String userName) {
-        app.shouldHaveText("Welcome: " + userName);
+        app.shouldHaveText("Welcome " + userName);
     }
 
     @Then("login failed error message should be {string}")
