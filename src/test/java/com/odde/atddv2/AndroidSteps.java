@@ -61,7 +61,7 @@ public class AndroidSteps {
 
     @Then("{string} should be logged in")
     public void shouldBeLoggedIn(String userName) {
-        await().ignoreExceptions().untilAsserted(() -> assertThat(getAndroidDriver().findElementsByAndroidUIAutomator("new UiSelector().text(\"Welcome: " + userName + "\")")).isNotEmpty());
+        await().ignoreExceptions().untilAsserted(() -> assertThat(getAndroidDriver().findElementsByAndroidUIAutomator("new UiSelector().text(\"Welcome " + userName + "\")")).isNotEmpty());
     }
 
     @Then("login failed error message should be {string}")
