@@ -48,6 +48,8 @@ public class AndroidSteps {
     public void closeApp() {
         if (driver != null) {
             driver.closeApp();
+            driver.quit();
+            driver = null;
         }
     }
 
