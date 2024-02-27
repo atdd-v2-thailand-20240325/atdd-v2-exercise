@@ -6,6 +6,8 @@ import com.odde.atddv2.repo.UserRepo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.Before;
+import io.cucumber.java.PendingException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginSteps {
@@ -37,5 +39,10 @@ public class LoginSteps {
     @Then("login failed error message should be {string}")
     public void loginFailedErrorMessageShouldBe(String message) {
         browser.shouldHaveText(message);
+    }
+
+    @Before("@ui-login")
+    public void uiLogin() {
+        throw new PendingException();
     }
 }
