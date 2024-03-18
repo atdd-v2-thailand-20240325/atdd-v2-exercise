@@ -8,9 +8,6 @@ Feature: Get familiar with environment
   Homework 2: Get familiar with Selenium
   `When search "cucumber" with baidu` use Selenium to open the browser and search "cucumber" with baidu (WebDriver has been defined in TestSteps.java)
   `Then print search result count` use Selenium to get the search result count from the search result page and print it to the log
-  ---
-  Homework 3: Get familiar with Appium
-  `input username "Tom"` use Appium to open the app and input the username (AndroidDriver has been defined in AndroidSteps.java)
 
   Scenario: Homework 1 - Print login token
     Given exists a user with username "joseph" and password "123"
