@@ -45,20 +45,20 @@ public class School {
     }
 
     private void createCover(XSSFWorkbook workbook) {
-        XSSFSheet sheet = workbook.createSheet("班级");
+        XSSFSheet sheet = workbook.createSheet("Class");
         XSSFRow row = sheet.createRow(0);
-        row.createCell(0).setCellValue("学校:");
+        row.createCell(0).setCellValue("School:");
         row.createCell(1).setCellValue(name);
         row = sheet.createRow(1);
-        row.createCell(0).setCellValue("班级总数:");
+        row.createCell(0).setCellValue("Total classes:");
         row.createCell(1).setCellValue(clazzes.size());
         row = sheet.createRow(2);
-        row.createCell(0).setCellValue("学生总数:");
+        row.createCell(0).setCellValue("Total students:");
         row.createCell(1).setCellValue(clazzes.stream().mapToInt(clazz -> clazz.getStudents().size()).sum());
 
         int r, c = 0;
         Row headerRow = sheet.createRow(r = 4);
-        for (String text : Arrays.asList("班级", "班主任", "语文", "英语", "数学"))
+        for (String text : Arrays.asList("Class", "Teacher", "Chinese", "English", "Math"))
             headerRow.createCell(c++).setCellValue(text);
         for (Clazz clazz : clazzes) {
             row = sheet.createRow(++r);

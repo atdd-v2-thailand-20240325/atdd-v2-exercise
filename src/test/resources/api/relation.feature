@@ -1,49 +1,49 @@
-# language: zh-CN
+# language: en
 @api-login
-功能: 关联数据
+Feature: Relational data
 
-  场景: 关联数据
-    假如存在"学校":
+  Scenario: Relational data
+    Given Exists data "School":
       | name |
       | PKU  |
       | ZJU  |
-    假如存在"老师":
+    Given Exists data "Teacher":
       | name  |
       | tom   |
       | jerry |
-    假如存在"班级":
+    Given Exists data "Clazz":
       | name   | school.name |
       | classA | PKU         |
       | classB | PKU         |
       | class1 | ZJU         |
       | class2 | ZJU         |
-    假如存在"学生":
+    Given Exists data "Student":
       | name     | clazz.name |
       | Zhangsan | classA     |
       | Lisi     | classA     |
       | Wangwu   | classB     |
       | Zhaoliu  | classB     |
-    那么API"/score"应为:
+    Then API "/score" should be:
     """
     body.unzip: {
       PKU.xlsx: {
-        班级: | A     | B   |
-            1 | 学校: | PKU |
+        Class: | A       | B   |
+            1  | School: | PKU |
 
         classA: | A        |
-            1   | 姓名     |
+            1   | Name     |
             2   | Zhangsan |
       }
     }
     """
 
-  场景: 总分
-    假如存在"学生":
+  Scenario: Total score
+    Given Exists data "Student":
       | name     | chinese | english | math | bonus |
       | Zhangsan | 90      | 80      | 70   | 8     |
-    那么API"/score"应为:
+    Then API "/score" should be:
     """
-    成绩单: | A        | F          |
-        1   | 姓名     | 总分       |
-        2   | Zhangsan | 90+80+70+8 |
+    totalScore: | A        | F          |
+            1   | Name     | Total      |
+            2   | Zhangsan | 90+80+70+8 |
     """

@@ -39,7 +39,7 @@ public class Clazz {
         Sheet sheet = workbook.createSheet(getName());
         int r, c = 0;
         Row headerRow = sheet.createRow(r = 0);
-        for (String text : Arrays.asList("姓名", "语文", "英语", "数学", "加分", "总分"))
+        for (String text : Arrays.asList("Name", "Chinese", "English", "Math", "Addition", "Total"))
             headerRow.createCell(c++).setCellValue(text);
         for (Student student : getStudents()) {
             Row row = sheet.createRow(++r);

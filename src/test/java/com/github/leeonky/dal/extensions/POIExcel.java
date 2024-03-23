@@ -109,7 +109,7 @@ public class POIExcel implements Extension {
             return new XSSFWorkbook(new ByteArrayInputStream(data));
         }
 
-        public static Object 成绩单(RestfulStep.Response response) {
+        public static Object totalScore(RestfulStep.Response response) {
             return expect(response).get("body.unzip[0].excel[1]");
         }
     }

@@ -51,8 +51,8 @@ public class ApplicationSteps {
         browser.quit();
     }
 
-    @当("等待{int}秒")
-    public void 等待_秒(long s) throws InterruptedException {
+    @当("sleep {int} seconds")
+    public void sleepSeconds(long s) throws InterruptedException {
         Thread.sleep(s * 1000);
     }
 }

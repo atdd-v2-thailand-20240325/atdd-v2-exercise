@@ -2,14 +2,10 @@ package com.odde.atddv2.spec;
 
 import com.github.leeonky.jfactory.Global;
 import com.github.leeonky.jfactory.Spec;
-import com.odde.atddv2.entity.relations.Clazz;
-import com.odde.atddv2.entity.relations.School;
-import com.odde.atddv2.entity.relations.Student;
-import com.odde.atddv2.entity.relations.Teacher;
 
 public class Relations {
     @Global
-    public static class 学校 extends Spec<School> {
+    public static class School extends Spec<com.odde.atddv2.entity.relations.School> {
         @Override
         public void main() {
             property("id").ignore();
@@ -18,7 +14,7 @@ public class Relations {
     }
 
     @Global
-    public static class 老师 extends Spec<Teacher> {
+    public static class Teacher extends Spec<com.odde.atddv2.entity.relations.Teacher> {
         @Override
         public void main() {
             property("id").ignore();
@@ -26,23 +22,23 @@ public class Relations {
     }
 
     @Global
-    public static class 班级 extends Spec<Clazz> {
+    public static class Clazz extends Spec<com.odde.atddv2.entity.relations.Clazz> {
         @Override
         public void main() {
             property("id").ignore();
-            property("school").is(学校.class);
-            property("teacher").is(老师.class);
+            property("school").is(School.class);
+            property("teacher").is(Teacher.class);
             property("students").reverseAssociation("clazz");
         }
     }
 
     @Global
-    public static class 学生 extends Spec<Student> {
+    public static class Student extends Spec<com.odde.atddv2.entity.relations.Student> {
         @Override
         public void main() {
             property("id").ignore();
-            property("clazz").is(班级.class);
-            property("school").dependsOn("clazz", clazz -> ((Clazz) clazz).getSchool());
+            property("clazz").is(Clazz.class);
+            property("school").dependsOn("clazz", clazz -> ((com.odde.atddv2.entity.relations.Clazz) clazz).getSchool());
         }
     }
 }
