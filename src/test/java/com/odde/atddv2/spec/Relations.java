@@ -9,7 +9,6 @@ public class Relations {
         @Override
         public void main() {
             property("id").ignore();
-            property("clazzes").reverseAssociation("school");
         }
     }
 
@@ -28,7 +27,6 @@ public class Relations {
             property("id").ignore();
             property("school").is(School.class);
             property("teacher").is(Teacher.class);
-            property("students").reverseAssociation("clazz");
         }
     }
 
