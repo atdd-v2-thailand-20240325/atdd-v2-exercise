@@ -2,6 +2,7 @@ package com.odde.atddv2;
 
 import com.github.leeonky.cucumber.restful.RestfulStep;
 import com.odde.atddv2.repo.OrderRepo;
+import com.odde.atddv2.repo.SchoolRepo;
 import com.odde.atddv2.repo.UserRepo;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -26,6 +27,9 @@ public class ApplicationSteps {
     private OrderRepo orderRepo;
 
     @Autowired
+    private SchoolRepo schoolRepo;
+
+    @Autowired
     private Browser browser;
     @Autowired
     private RestfulStep restfulStep;
@@ -34,6 +38,7 @@ public class ApplicationSteps {
     public void clearDB() {
         userRepo.deleteAll();
         orderRepo.deleteAll();
+        schoolRepo.deleteAll();
     }
 
     @PostConstruct
